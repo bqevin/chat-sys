@@ -13,13 +13,17 @@ class SimpleAjaxyChat {
     /**
     * Adding to DB table posted message
     */
+
+    //Added a $toUserID = 1 & $orderID = 100; variables here--HardCorded
     function acceptMessages() {
         $sUsername = $GLOBALS['aLMemInfo']['name'];
         $iUserID = (int)$GLOBALS['aLMemInfo']['id'];
-        if($sUsername && isset($_POST['s_message']) && $_POST['s_message'] != '') {
+        $toUserID = 1;
+        $orderID = 1000;
+        if($sUsername && $toUserID && isset($_POST['s_message']) && $_POST['s_message'] != '') {
             $sMessage = $GLOBALS['MySQL']->process_db_input($_POST['s_message'], A_TAGS_STRIP);
             if ($sMessage != '') {
-                $GLOBALS['MySQL']->res("INSERT INTO `s_ajax_chat_messages` SET `member_id`='{$iUserID}', `member_name`='{$sUsername}', `message`='{$sMessage}', `when`=UNIX_TIMESTAMP()");
+                $GLOBALS['MySQL']->res("INSERT INTO `s_ajax_chat_messages` SET `member_id`='{$iUserID}', `member_name`='{$sUsername}', `message`='{$sMessage}', `order_id`='{$orderID}', `to_id`='{$toUserID}', `when`=UNIX_TIMESTAMP()");
             }
         }
     }
@@ -34,11 +38,11 @@ class SimpleAjaxyChat {
     }
 
     /**
-    * Return last 15 messages
+    * Return last 15 messages 
     */
     function getMessages($bOnlyMessages = false) {
-        $aMessages = $GLOBALS['MySQL']->getAll("SELECT `s_ajax_chat_messages`.*, `s_members`.`name`, UNIX_TIMESTAMP()-`s_ajax_chat_messages`.`when` AS 'diff' FROM `s_ajax_chat_messages` INNER JOIN `s_members` ON `s_members`.`id` = `s_ajax_chat_messages`.`member_id` ORDER BY `id` DESC LIMIT 15");
-
+        //Have done manual pluggin, now i need to use dynamic data
+        $aMessages = $GLOBALS['MySQL']->getAll("SELECT * from s_ajax_chat_messages where order_id = 1000 and member_id=1111 or 1 ORDER BY `id` DESC LIMIT 15");
         $sMessages = '';
         // collecting list of messages
         foreach ($aMessages as $iID => $aMessage) {
@@ -52,7 +56,7 @@ class SimpleAjaxyChat {
             $sWhen = date("H:i:s", $aMessage['when']);
             $sMessages .= '      <li class="collection-item avatar" id="message_'.$aMessage['id'].'" '.$sExStyles.'>
       <img class="material-icons circle green" src="img/4.jpg">
-        <strong><span class="title">' . $aMessage['name'] . '</span></strong>
+        <strong><span class="title">' . $aMessage['member_name'] . '</span></strong>
        <p>' . $aMessage['message'] . '</p>
        <small> (Sent: ' . $sWhen  . ') <a href="#!" class="secondary-content"><i class="material-icons">check</i>
         </a> </small>
@@ -63,6 +67,7 @@ class SimpleAjaxyChat {
         if ($bOnlyMessages) return $sMessages;
         return '<ul class="collection chat_main">' . $sMessages . '</ul>';
     }
+
 }
 
 $GLOBALS['AjaxChat'] = new SimpleAjaxyChat();

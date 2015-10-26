@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://php.net/manual/en/mysqli.quickstart.dual-interface.php -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class=" js flexbox flexboxlegacy datauri"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>PHP: Dual procedural and object-oriented interface - Manual </title>
+
+ <link rel="shortcut icon" href="http://php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="http://php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/PHP_ Dual procedural and object-oriented interface - Manual.html">
+ <link rel="shorturl" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/PHP_ Dual procedural and object-oriented interface - Manual.html">
+ <link rel="alternate" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/PHP_ Dual procedural and object-oriented interface - Manual.html" hreflang="x-default">
+
+ <link rel="contents" href="http://php.net/manual/en/index.php">
+ <link rel="index" href="http://php.net/manual/en/mysqli.quickstart.php">
+ <link rel="prev" href="http://php.net/manual/en/mysqli.quickstart.php">
+ <link rel="next" href="http://php.net/manual/en/mysqli.quickstart.connections.php">
+
+ <link rel="alternate" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/PHP_ Dual procedural and object-oriented interface - Manual.html" hreflang="en">
+ <link rel="alternate" href="http://php.net/manual/pt_BR/mysqli.quickstart.dual-interface.php" hreflang="pt_BR">
+ <link rel="alternate" href="http://php.net/manual/zh/mysqli.quickstart.dual-interface.php" hreflang="zh">
+ <link rel="alternate" href="http://php.net/manual/fr/mysqli.quickstart.dual-interface.php" hreflang="fr">
+ <link rel="alternate" href="http://php.net/manual/de/mysqli.quickstart.dual-interface.php" hreflang="de">
+ <link rel="alternate" href="http://php.net/manual/ja/mysqli.quickstart.dual-interface.php" hreflang="ja">
+ <link rel="alternate" href="http://php.net/manual/kr/mysqli.quickstart.dual-interface.php" hreflang="kr">
+ <link rel="alternate" href="http://php.net/manual/ro/mysqli.quickstart.dual-interface.php" hreflang="ro">
+ <link rel="alternate" href="http://php.net/manual/ru/mysqli.quickstart.dual-interface.php" hreflang="ru">
+ <link rel="alternate" href="http://php.net/manual/es/mysqli.quickstart.dual-interface.php" hreflang="es">
+ <link rel="alternate" href="http://php.net/manual/tr/mysqli.quickstart.dual-interface.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached.php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(1).php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(2).php" media="screen">
+<link rel="stylesheet" type="text/css" href="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(3).php" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script type="text/javascript">
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="http://php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script type="text/javascript" src="http://php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <!--<base href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php">--><base href=".">
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="http://php.net/" class="brand"><img src="./PHP_ Dual procedural and object-oriented interface - Manual_files/logo.php" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="http://php.net/downloads">Downloads</a></li>
+      <li class="active"><a href="http://php.net/docs.php">Documentation</a></li>
+      <li class=""><a href="http://php.net/get-involved">Get Involved</a></li>
+      <li class=""><a href="http://php.net/support">Help</a></li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="http://php.net/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input class="tt-hint search-query" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><input type="search" name="pattern" class="search-query tt-query" placeholder="Search" accesskey="s" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><input type="submit" style="visibility: hidden; position: fixed"><span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: &#39;Fira Sans&#39;, &#39;Source Sans Pro&#39;, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"></span></span>
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<nav id="trick"><div><dl>
+<dt><a href="http://php.net/manual/en/getting-started.php">Getting Started</a></dt>
+	<dd><a href="http://php.net/manual/en/introduction.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/tutorial.php">A simple tutorial</a></dd>
+<dt><a href="http://php.net/manual/en/langref.php">Language Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/language.basic-syntax.php">Basic syntax</a></dd>
+	<dd><a href="http://php.net/manual/en/language.types.php">Types</a></dd>
+	<dd><a href="http://php.net/manual/en/language.variables.php">Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/language.constants.php">Constants</a></dd>
+	<dd><a href="http://php.net/manual/en/language.expressions.php">Expressions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.operators.php">Operators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.control-structures.php">Control Structures</a></dd>
+	<dd><a href="http://php.net/manual/en/language.functions.php">Functions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.oop5.php">Classes and Objects</a></dd>
+	<dd><a href="http://php.net/manual/en/language.namespaces.php">Namespaces</a></dd>
+	<dd><a href="http://php.net/manual/en/language.errors.php">Errors</a></dd>
+	<dd><a href="http://php.net/manual/en/language.exceptions.php">Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/language.generators.php">Generators</a></dd>
+	<dd><a href="http://php.net/manual/en/language.references.php">References Explained</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.variables.php">Predefined Variables</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.exceptions.php">Predefined Exceptions</a></dd>
+	<dd><a href="http://php.net/manual/en/reserved.interfaces.php">Predefined Interfaces and Classes</a></dd>
+	<dd><a href="http://php.net/manual/en/context.php">Context options and parameters</a></dd>
+	<dd><a href="http://php.net/manual/en/wrappers.php">Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/security.php">Security</a></dt>
+	<dd><a href="http://php.net/manual/en/security.intro.php">Introduction</a></dd>
+	<dd><a href="http://php.net/manual/en/security.general.php">General considerations</a></dd>
+	<dd><a href="http://php.net/manual/en/security.cgi-bin.php">Installed as CGI binary</a></dd>
+	<dd><a href="http://php.net/manual/en/security.apache.php">Installed as an Apache module</a></dd>
+	<dd><a href="http://php.net/manual/en/security.filesystem.php">Filesystem Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.database.php">Database Security</a></dd>
+	<dd><a href="http://php.net/manual/en/security.errors.php">Error Reporting</a></dd>
+	<dd><a href="http://php.net/manual/en/security.globals.php">Using Register Globals</a></dd>
+	<dd><a href="http://php.net/manual/en/security.variables.php">User Submitted Data</a></dd>
+	<dd><a href="http://php.net/manual/en/security.magicquotes.php">Magic Quotes</a></dd>
+	<dd><a href="http://php.net/manual/en/security.hiding.php">Hiding PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/security.current.php">Keeping Current</a></dd>
+<dt><a href="http://php.net/manual/en/features.php">Features</a></dt>
+	<dd><a href="http://php.net/manual/en/features.http-auth.php">HTTP authentication with PHP</a></dd>
+	<dd><a href="http://php.net/manual/en/features.cookies.php">Cookies</a></dd>
+	<dd><a href="http://php.net/manual/en/features.sessions.php">Sessions</a></dd>
+	<dd><a href="http://php.net/manual/en/features.xforms.php">Dealing with XForms</a></dd>
+	<dd><a href="http://php.net/manual/en/features.file-upload.php">Handling file uploads</a></dd>
+	<dd><a href="http://php.net/manual/en/features.remote-files.php">Using remote files</a></dd>
+	<dd><a href="http://php.net/manual/en/features.connection-handling.php">Connection handling</a></dd>
+	<dd><a href="http://php.net/manual/en/features.persistent-connections.php">Persistent Database Connections</a></dd>
+	<dd><a href="http://php.net/manual/en/features.safe-mode.php">Safe Mode</a></dd>
+	<dd><a href="http://php.net/manual/en/features.commandline.php">Command line usage</a></dd>
+	<dd><a href="http://php.net/manual/en/features.gc.php">Garbage Collection</a></dd>
+	<dd><a href="http://php.net/manual/en/features.dtrace.php">DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href="http://php.net/manual/en/funcref.php">Function Reference</a></dt>
+	<dd><a href="http://php.net/manual/en/refs.basic.php.php">Affecting PHP's Behaviour</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.audio.php">Audio Formats Manipulation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.auth.php">Authentication Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.cmdline.php">Command Line Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.compression.php">Compression and Archive Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.creditcard.php">Credit Card Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.crypto.php">Cryptography Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.database.php">Database Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.calendar.php">Date and Time Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.file.php">File System Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.international.php">Human Language and Character Encoding Support</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.image.php">Image Processing and Generation</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.mail.php">Mail Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.math.php">Mathematical Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.nontext.php">Non-Text MIME Output</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.fileprocess.process.php">Process Control Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.other.php">Other Basic Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.remote.other.php">Other Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.search.php">Search Engine Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.server.php">Server Specific Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.session.php">Session Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.text.php">Text Processing</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.basic.vartype.php">Variable and Type Related Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.webservice.php">Web Services</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.utilspec.windows.php">Windows Only Extensions</a></dd>
+	<dd><a href="http://php.net/manual/en/refs.xml.php">XML Manipulation</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="http://php.net/manual/en/mysqli.quickstart.connections.php">
+          Connections »
+        </a>
+      </div>
+              <div class="prev">
+        <a href="http://php.net/manual/en/mysqli.quickstart.php">
+          « Quick start guide        </a>
+      </div>
+          <ul>
+            <li><a href="http://php.net/manual/en/index.php">PHP Manual</a></li>      <li><a href="http://php.net/manual/en/funcref.php">Function Reference</a></li>      <li><a href="http://php.net/manual/en/refs.database.php">Database Extensions</a></li>      <li><a href="http://php.net/manual/en/refs.database.vendors.php">Vendor Specific Database Extensions</a></li>      <li><a href="http://php.net/manual/en/set.mysqlinfo.php">MySQL</a></li>      <li><a href="http://php.net/manual/en/book.mysqli.php">MySQLi</a></li>      <li><a href="http://php.net/manual/en/mysqli.quickstart.php">Quick start guide</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="http://php.net/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value="en/mysqli.quickstart.dual-interface.php" selected="selected">English</option>
+            <option value="pt_BR/mysqli.quickstart.dual-interface.php">Brazilian Portuguese</option>
+            <option value="zh/mysqli.quickstart.dual-interface.php">Chinese (Simplified)</option>
+            <option value="fr/mysqli.quickstart.dual-interface.php">French</option>
+            <option value="de/mysqli.quickstart.dual-interface.php">German</option>
+            <option value="ja/mysqli.quickstart.dual-interface.php">Japanese</option>
+            <option value="kr/mysqli.quickstart.dual-interface.php">Korean</option>
+            <option value="ro/mysqli.quickstart.dual-interface.php">Romanian</option>
+            <option value="ru/mysqli.quickstart.dual-interface.php">Russian</option>
+            <option value="es/mysqli.quickstart.dual-interface.php">Spanish</option>
+            <option value="tr/mysqli.quickstart.dual-interface.php">Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://edit.php.net/?project=PHP&perm=en/mysqli.quickstart.dual-interface.php">Edit</a>
+      <a href="https://bugs.php.net/report.php?bug_type=Documentation+problem&manpage=mysqli.quickstart.dual-interface">Report a Bug</a>
+    </div>
+  </div><div id="mysqli.quickstart.dual-interface" class="section">
+  <h2 class="title">Dual procedural and object-oriented interface<a class="genanchor" href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php#mysqli.quickstart.dual-interface"> ¶</a></h2>
+  <p class="para">
+   The mysqli extension features a dual interface. It supports the procedural
+   and object-oriented programming paradigm.
+  </p>
+  <p class="para">
+   Users migrating from the old mysql extension may prefer the procedural
+   interface. The procedural interface is similar to that of the old mysql
+   extension. In many cases, the function names differ only by prefix.
+   Some mysqli functions take a connection handle as their first argument,
+   whereas matching functions in the old mysql interface take
+   it as an optional last argument.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1818">
+    <p><strong>Example #1 Easy migration from the old mysql extension</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;'Please,&nbsp;do&nbsp;not&nbsp;use&nbsp;'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br>echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_msg'</span><span style="color: #007700">];<br><br></span><span style="color: #0000BB">$mysql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">mysql_select_db</span><span style="color: #007700">(</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'the&nbsp;mysql&nbsp;extension&nbsp;for&nbsp;new&nbsp;developments.'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysql</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br>echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_msg'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>Please, do not use the mysql extension for new developments.
+</pre></div>
+    </div>
+   </div>
+  <p></p>
+  <p class="para">
+   <em class="emphasis">The object-oriented interface</em>
+  </p>
+  <p class="para">
+   In addition to the classical procedural interface, users can choose to use
+   the object-oriented interface. The documentation is organized using
+   the object-oriented interface. The object-oriented interface shows functions
+   grouped by their purpose, making it easier to get started. The reference section
+   gives examples for both syntax variants.
+  </p>
+  <p class="para">
+   There are no significant performance differences between the two interfaces.
+   Users can base their choice on personal preference.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1819">
+    <p><strong>Example #2 Object-oriented and procedural interface</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if&nbsp;(</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">))&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;MySQL:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">();<br>}<br><br></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;'A&nbsp;world&nbsp;full&nbsp;of&nbsp;'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br>echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_msg'</span><span style="color: #007700">];<br><br></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;MySQL:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'choices&nbsp;to&nbsp;please&nbsp;everybody.'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">();<br>echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_msg'</span><span style="color: #007700">];<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>A world full of choices to please everybody.
+</pre></div>
+    </div>
+   </div>
+  <p></p>
+  <p class="para">
+   The object oriented interface is used for the quickstart because the
+   reference section is organized that way.
+  </p>
+  <p class="para">
+   <em class="emphasis">Mixing styles</em>
+  </p>
+  <p class="para">
+   It is possible to switch between styles at any time. Mixing both styles is
+   not recommended for code clarity and coding style reasons.
+  </p>
+  <p class="para">
+   </p><div class="example" id="example-1820">
+    <p><strong>Example #3 Bad coding style</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br>$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br>if&nbsp;(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_errno</span><span style="color: #007700">)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;connect&nbsp;to&nbsp;MySQL:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect_error</span><span style="color: #007700">;<br>}<br><br></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;'Possible&nbsp;but&nbsp;bad&nbsp;style.'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br>if&nbsp;(!</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Failed&nbsp;to&nbsp;run&nbsp;query:&nbsp;("&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">")&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">;<br>}<br><br>if&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">())&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'_msg'</span><span style="color: #007700">];<br>}<br></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>Possible but bad style.
+</pre></div>
+    </div>
+    </div>
+  <p></p>
+  <p class="para">
+   <em class="emphasis">See also</em>
+  </p>
+  <p class="para">
+   </p><ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="http://php.net/manual/en/mysqli.construct.php" class="methodname">mysqli::__construct()</a></span></li>
+    <li class="member"><span class="methodname"><a href="http://php.net/manual/en/mysqli.query.php" class="methodname">mysqli::query()</a></span></li>
+    <li class="member"><span class="methodname"><a href="http://php.net/manual/en/mysqli-result.fetch-assoc.php" class="methodname">mysqli_result::fetch_assoc()</a></span></li>
+    <li class="member"><a href="http://php.net/manual/en/mysqli.connect-errno.php" class="link">$mysqli::connect_errno</a></li>
+    <li class="member"><a href="http://php.net/manual/en/mysqli.connect-error.php" class="link">$mysqli::connect_error</a></li>
+    <li class="member"><a href="http://php.net/manual/en/mysqli.errno.php" class="link">$mysqli::errno</a></li>
+    <li class="member"><a href="http://php.net/manual/en/mysqli.error.php" class="link">$mysqli::error</a></li>
+    <li class="member"><a href="http://php.net/manual/en/mysqli.summary.php" class="link">The MySQLi Extension Function Summary</a></li>
+   </ul>
+  <p></p>
+ </div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="http://php.net/manual/add-note.php?sect=mysqli.quickstart.dual-interface&redirect=http://php.net/manual/en/mysqli.quickstart.dual-interface.php"><img src="./PHP_ Dual procedural and object-oriented interface - Manual_files/notes-add@2x.png" alt="add a note" width="12" height="12"> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">2 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="116461">  <div class="votes">
+    <div id="Vu116461">
+    <a href="http://php.net/manual/vote-note.php?id=116461&page=mysqli.quickstart.dual-interface&vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd116461">
+    <a href="http://php.net/manual/vote-note.php?id=116461&page=mysqli.quickstart.dual-interface&vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V116461" title="76% like this...">
+    13
+    </div>
+  </div>
+  <a href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php#116461" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php#116461"> ¶</a><div class="date" title="2015-01-06 11:36"><strong>9 months ago</strong></div>
+  <div class="text" id="Hcom116461">
+<div class="phpcode"><code><span class="html">
+Just want to add that both procedural mysqli_connect_errno and mysqli_connect_error DON'T accept any arguments!<br><a href="http://php.net/manual/de/mysqli.connect-errno.php" rel="nofollow" target="_blank">http://php.net/manual/de/mysqli.connect-errno.php</a><br><a href="http://php.net/manual/de/mysqli.connect-error.php" rel="nofollow" target="_blank">http://php.net/manual/de/mysqli.connect-error.php</a><br>"int mysqli_connect_errno ( void )"<br>"string mysqli_connect_error ( void )"<br>It clearly states "void" there.<br><br>Adding the mysqli-Instance as a parameter makes it look like it pulls the error-number out of the provided instance, which is not actually happening. This could end in a hard to detect bug when connecting to multiple SQL servers.<br>And it is confusing for beginners.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="112656">  <div class="votes">
+    <div id="Vu112656">
+    <a href="http://php.net/manual/vote-note.php?id=112656&page=mysqli.quickstart.dual-interface&vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd112656">
+    <a href="http://php.net/manual/vote-note.php?id=112656&page=mysqli.quickstart.dual-interface&vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V112656" title="28% like this...">
+    -22
+    </div>
+  </div>
+  <a href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php#112656" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="http://php.net/manual/en/mysqli.quickstart.dual-interface.php#112656"> ¶</a><div class="date" title="2013-07-09 05:26"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom112656" style="opacity: 0.35;">
+<div class="phpcode"><code><span class="html">
+After significant searching with no success finding a solution I was able to figure out the following to error 2005 where the connection could not find the host. While I am hosted on 1&amp;1 I saw numerous posts with similar problems.<br><br>The solution turned out to be as follows:<br><br><span class="default">&lt;?php <br><br>$mysqli </span><span class="keyword">= new </span><span class="default">mysqli</span><span class="keyword">(</span><span class="default">DB_HOST</span><span class="keyword">, </span><span class="default">DB_USER</span><span class="keyword">, </span><span class="default">DB_PASS</span><span class="keyword">, </span><span class="default">DB_NAME</span><span class="keyword">, </span><span class="default">DB_PORT</span><span class="keyword">, </span><span class="default">DB_UNIX_SOCKET</span><span class="keyword">);<br><br></span><span class="default">I added the DB_PORT </span><span class="keyword">and </span><span class="default">DB_UNIX_SOCKET<br><br></span><span class="comment">/** name of the database. please note: database and database table are not the same thing! */<br></span><span class="default">define</span><span class="keyword">(</span><span class="string">"DB_NAME"</span><span class="keyword">, </span><span class="string">"YOUR DB NAME"</span><span class="keyword">);<br><br></span><span class="comment">/** user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.<br>/** By the way, it's bad style to use "root", but for development it will work */<br></span><span class="default">define</span><span class="keyword">(</span><span class="string">"DB_USER"</span><span class="keyword">, </span><span class="string">"YOUR DB USER"</span><span class="keyword">);<br><br></span><span class="comment">/** The password of the above user */<br></span><span class="default">define</span><span class="keyword">(</span><span class="string">"DB_PASS"</span><span class="keyword">, </span><span class="string">"YOUR DB PWORD"</span><span class="keyword">);<br><br></span><span class="comment">/** The unix socket for 1&amp;1 dedicated */<br></span><span class="default">define</span><span class="keyword">(</span><span class="string">"DB_UNIX_SOCKET"</span><span class="keyword">, </span><span class="string">"/tmp/mysql5.sock"</span><span class="keyword">);<br><br></span><span class="comment">/** The db port, replace with yours */<br></span><span class="default">define</span><span class="keyword">(</span><span class="string">"DB_PORT"</span><span class="keyword">, </span><span class="default">3306</span><span class="keyword">);<br></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="http://php.net/manual/add-note.php?sect=mysqli.quickstart.dual-interface&redirect=http://php.net/manual/en/mysqli.quickstart.dual-interface.php"><img src="./PHP_ Dual procedural and object-oriented interface - Manual_files/notes-add@2x.png" alt="add a note" width="12" height="12"> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class="layout-menu">
+    
+        <ul class="parent-menu-list">
+                                    <li>
+                <a href="http://php.net/manual/en/mysqli.quickstart.php">Quick start guide</a>
+    
+                                    <ul class="child-menu-list">
+    
+                          
+                        <li class="current">
+                            <a href="./PHP_ Dual procedural and object-oriented interface - Manual_files/PHP_ Dual procedural and object-oriented interface - Manual.html" title="Dual procedural and object-​oriented interface">Dual procedural and object-​oriented interface</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.connections.php" title="Connections">Connections</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.statements.php" title="Executing statements">Executing statements</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.prepared-statements.php" title="Prepared Statements">Prepared Statements</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.stored-procedures.php" title="Stored Procedures">Stored Procedures</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.multiple-statement.php" title="Multiple Statements">Multiple Statements</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.transactions.php" title="API support for transactions">API support for transactions</a>
+                        </li>
+                          
+                        <li class="">
+                            <a href="http://php.net/manual/en/mysqli.quickstart.metadata.php" title="Metadata">Metadata</a>
+                        </li>
+                            
+                    </ul>
+                    
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+         
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="http://php.net/copyright.php">Copyright © 2001-2015 The PHP Group</a></li>
+        <li><a href="http://php.net/my.php">My PHP.net</a></li>
+        <li><a href="http://php.net/contact.php">Contact</a></li>
+        <li><a href="http://php.net/sites.php">Other PHP.net sites</a></li>
+        <li><a href="http://php.net/mirrors.php">Mirror sites</a></li>
+        <li><a href="http://php.net/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/jquery.min.js"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(4).php"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(5).php"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(6).php"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(7).php"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(8).php"></script>
+<script type="text/javascript" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/cached(9).php"></script>
+
+<a id="toTop" href="javascript:;" style="display: inline;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="./PHP_ Dual procedural and object-oriented interface - Manual_files/to-top@2x.png"></a>
+
+
+
+
+</body></html>
